@@ -1,2 +1,2 @@
 # PrepNotes
-https://vamsiboppana7.github.io/PrepNotes/home.html
+https://vamsiboppana7.github.io/PrepNotes/index.html

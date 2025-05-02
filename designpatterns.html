@@ -98,58 +98,71 @@
                 onkeyup="searchQuestions()" />
         </div>
         <div class="accordion" id="googleAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed search-item" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#structuralPatterns">
+                        Structural Design Patterns in C#
+                    </button>
+                </h2>
+                <div id="structuralPatterns" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <a href="https://dotnettutorials.net/lesson/structural-design-pattern/">Structural Design
+                            Patterns</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
 
 
-    <!-- Bootstrap & Search Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let questionCount = document.querySelectorAll(".accordion-item").length;
-            document.getElementById("questionCount").innerHTML = `<strong>Total Questions: ${questionCount}</strong>`;
-        });
-        document.addEventListener("DOMContentLoaded", function () {
-            let items = document.querySelectorAll(".accordion-item");
-
-            items.forEach((item, index) => {
-                let button = item.querySelector(".accordion-button");
-                if (button) {
-                    button.innerHTML = `<span class="fw-bold me-2">${index + 1}.</span> ` + button.innerHTML;
-                }
+        <!-- Bootstrap & Search Script -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let questionCount = document.querySelectorAll(".accordion-item").length;
+                document.getElementById("questionCount").innerHTML = `<strong>Total Questions: ${questionCount}</strong>`;
             });
-        });
+            document.addEventListener("DOMContentLoaded", function () {
+                let items = document.querySelectorAll(".accordion-item");
 
-        function searchQuestions() {
-            const input = document.getElementById("searchBox").value.toLowerCase();
-            const items = document.querySelectorAll(".accordion-item");
-
-            items.forEach((item) => {
-                const buttonText = item.querySelector(".accordion-button")?.textContent.toLowerCase() || "";
-                const bodyText = item.querySelector(".accordion-body")?.textContent.toLowerCase() || "";
-
-                const combinedText = buttonText + " " + bodyText;
-
-                if (combinedText.includes(input)) {
-                    item.style.display = "";
-                } else {
-                    item.style.display = "none";
-                }
-            });
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard
-                .writeText(text)
-                .then(() => {
-                    alert("Copied: " + text);
-                })
-                .catch((err) => {
-                    console.error("Failed to copy:", err);
+                items.forEach((item, index) => {
+                    let button = item.querySelector(".accordion-button");
+                    if (button) {
+                        button.innerHTML = `<span class="fw-bold me-2">${index + 1}.</span> ` + button.innerHTML;
+                    }
                 });
-        }
-    </script>
+            });
+
+            function searchQuestions() {
+                const input = document.getElementById("searchBox").value.toLowerCase();
+                const items = document.querySelectorAll(".accordion-item");
+
+                items.forEach((item) => {
+                    const buttonText = item.querySelector(".accordion-button")?.textContent.toLowerCase() || "";
+                    const bodyText = item.querySelector(".accordion-body")?.textContent.toLowerCase() || "";
+
+                    const combinedText = buttonText + " " + bodyText;
+
+                    if (combinedText.includes(input)) {
+                        item.style.display = "";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            }
+
+            function copyToClipboard(text) {
+                navigator.clipboard
+                    .writeText(text)
+                    .then(() => {
+                        alert("Copied: " + text);
+                    })
+                    .catch((err) => {
+                        console.error("Failed to copy:", err);
+                    });
+            }
+        </script>
 </body>
 
 </html>

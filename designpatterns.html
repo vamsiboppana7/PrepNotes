@@ -108,7 +108,7 @@
                 <div id="structuralPatterns" class="accordion-collapse collapse">
                     <div class="accordion-body">
                         <a href="https://dotnettutorials.net/lesson/structural-design-pattern/"
-                            target="_blank">Structural Design
+                            target="_blank" rel="noopener noreferrer">Structural Design
                             Patterns</a>
                     </div>
                 </div>
@@ -122,17 +122,231 @@
                 </h2>
                 <div id="bridgeDesignPattern" class="accordion-collapse collapse">
                     <div class="accordion-body">
+                        <p>
                         <a href="https://dotnettutorials.net/lesson/bridge-design-pattern/" target="_blank"
                             rel="noopener noreferrer">Bridge
                             Design
-                            Pattern - dotnettutorials</a>
-                        <br />
+                            Pattern - dotnettutorials</a></p>
+                        <p>
                         <a href="https://www.tutorialsteacher.com/designpattern/bridge-design-pattern" target="_blank"
                             rel="noopener noreferrer">Bridge
                             Design Pattern - tutorialsteacher</a>
+                        </p>
+                        <a href="https://dofactory.com/net/bridge-design-pattern" target="_blank"
+                        rel="noopener noreferrer">Bridge
+                        Design Pattern - dofactory.com</a>
+                    </p>
                     </div>
                 </div>
             </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed search-item" type="button" data-bs-toggle="collapse" data-bs-target="#facadeAccordion">
+                    Facade Design Pattern in C# with Example
+                </button>
+                </h2>
+                <div id="facadeAccordion" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    <h5>1. What is the Facade Design Pattern?</h5>
+                    <p>The Facade Design Pattern is a structural pattern that provides a simplified interface to a complex system of classes, libraries, or frameworks.</p>
+                    <p><strong>GoF Definition:</strong> "Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use."</p>
+            
+                    <h5>2. Real-Time Example</h5>
+                    <p>In an e-commerce application, placing an order may involve:</p>
+                    <ul>
+                    <li>Fetching product details</li>
+                    <li>Processing payment</li>
+                    <li>Sending invoice</li>
+                    </ul>
+                    <p>Without the Facade pattern, the client would interact with each subsystem individually. With Facade, a unified interface (e.g., <code>Order</code>) simplifies this.</p>
+            
+                    <h5>3. Class Diagram Components</h5>
+                    <ul>
+                    <li><strong>Facade Class</strong>: Simplifies and unifies subsystem access</li>
+                    <li><strong>Subsystem Classes</strong>: Perform the actual work</li>
+                    <li><strong>Client</strong>: Uses the Facade instead of dealing with subsystems directly</li>
+                    </ul>
+            
+                    <h5>4. Implementation in C#</h5>
+                    <p><strong>Product.cs</strong></p>
+                    <pre><code class="language-csharp">public class Product {
+            public void GetProductDetails() {
+                Console.WriteLine("Fetching the Product Details");
+            }
+            }</code></pre>
+            
+                    <p><strong>Payment.cs</strong></p>
+                    <pre><code class="language-csharp">public class Payment {
+            public void MakePayment() {
+                Console.WriteLine("Payment Done Successfully");
+            }
+            }</code></pre>
+            
+                    <p><strong>Invoice.cs</strong></p>
+                    <pre><code class="language-csharp">public class Invoice {
+            public void SendInvoice() {
+                Console.WriteLine("Invoice Sent Successfully");
+            }
+            }</code></pre>
+            
+                    <p><strong>Order (Facade).cs</strong></p>
+                    <pre><code class="language-csharp">public class Order {
+            public void PlaceOrder() {
+                Console.WriteLine("Place Order Started");
+                new Product().GetProductDetails();
+                new Payment().MakePayment();
+                new Invoice().SendInvoice();
+                Console.WriteLine("Order Placed Successfully");
+            }
+            }</code></pre>
+            
+                    <p><strong>Client.cs</strong></p>
+                    <pre><code class="language-csharp">class Program {
+            static void Main() {
+                new Order().PlaceOrder();
+                Console.Read();
+            }
+            }</code></pre>
+            
+                    <p><strong>Output:</strong></p>
+                    <pre><code>
+            Place Order Started
+            Fetching the Product Details
+            Payment Done Successfully
+            Invoice Sent Successfully
+            Order Placed Successfully
+                    </code></pre>
+            
+                    <h5>5. Advantages</h5>
+                    <ul>
+                    <li>Simplifies access to complex systems</li>
+                    <li>Decouples client from subsystems</li>
+                    <li>Makes code easier to test and maintain</li>
+                    </ul>
+            
+                    <h5>6. When to Use</h5>
+                    <ul>
+                    <li>When you need to simplify a complex set of classes</li>
+                    <li>To provide an entry point into each layer of a layered system</li>
+                    <li>To decouple clients from subsystem complexity</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed search-item" type="button" data-bs-toggle="collapse" data-bs-target="#decoratorAccordion">
+                    Decorator Design Pattern in Java
+                </button>
+                </h2>
+                <div id="decoratorAccordion" class="accordion-collapse collapse" aria-labelledby="headingDecorator">
+                <div class="accordion-body">
+                    <h5>1. What is the Decorator Pattern?</h5>
+                    <p>The Decorator pattern is a structural design pattern that allows behavior to be added to individual objects, either statically or dynamically, without affecting the behavior of other objects from the same class. It acts as a wrapper to existing classes.</p>
+            
+                    <h5>2. Key Concepts</h5>
+                    <ul>
+                    <li>Decorator class wraps the original class and provides additional functionality.</li>
+                    <li>Maintains the class methods' signature intact.</li>
+                    <li>Allows for dynamic behavior addition without modifying the original class.</li>
+                    </ul>
+            
+                    <h5>3. Real-World Analogy</h5>
+                    <p>Consider a shape (like a circle or rectangle). You can add new features like color or border to it without altering the original shape class. This is achieved by wrapping the shape with a decorator that adds the new feature.</p>
+            
+                    <h5>4. Implementation</h5>
+                    <p>We will create a <code>Shape</code> interface and concrete classes implementing this interface. Then, we'll create an abstract decorator class <code>ShapeDecorator</code> implementing the <code>Shape</code> interface and having a <code>Shape</code> object as its instance variable. <code>RedShapeDecorator</code> is a concrete class implementing <code>ShapeDecorator</code>. Finally, <code>DecoratorPatternDemo</code> will use <code>RedShapeDecorator</code> to decorate <code>Shape</code> objects.</p>
+            
+                    <h6>Shape.java</h6>
+                    <pre><code class="language-java">public interface Shape {
+                void draw();
+            }</code></pre>
+            
+                    <h6>Circle.java</h6>
+                    <pre><code class="language-java">public class Circle implements Shape {
+                @Override
+                public void draw() {
+                System.out.println("Shape: Circle");
+                }
+            }</code></pre>
+            
+                    <h6>Rectangle.java</h6>
+                    <pre><code class="language-java">public class Rectangle implements Shape {
+                @Override
+                public void draw() {
+                System.out.println("Shape: Rectangle");
+                }
+            }</code></pre>
+            
+                    <h6>ShapeDecorator.java</h6>
+                    <pre><code class="language-java">public abstract class ShapeDecorator implements Shape {
+                protected Shape decoratedShape;
+            
+                public ShapeDecorator(Shape decoratedShape){
+                this.decoratedShape = decoratedShape;
+                }
+            
+                public void draw(){
+                decoratedShape.draw();
+                }
+            }</code></pre>
+            
+                    <h6>RedShapeDecorator.java</h6>
+                    <pre><code class="language-java">public class RedShapeDecorator extends ShapeDecorator {
+            
+                public RedShapeDecorator(Shape decoratedShape) {
+                super(decoratedShape);        
+                }
+            
+                @Override
+                public void draw() {
+                decoratedShape.draw();           
+                setRedBorder(decoratedShape);
+                }
+            
+                private void setRedBorder(Shape decoratedShape){
+                System.out.println("Border Color: Red");
+                }
+            }</code></pre>
+            
+                    <h6>DecoratorPatternDemo.java</h6>
+                    <pre><code class="language-java">public class DecoratorPatternDemo {
+                public static void main(String[] args) {
+            
+                Shape circle = new Circle();
+            
+                Shape redCircle = new RedShapeDecorator(new Circle());
+            
+                Shape redRectangle = new RedShapeDecorator(new Rectangle());
+                System.out.println("Circle with normal border");
+                circle.draw();
+            
+                System.out.println("\nCircle of red border");
+                redCircle.draw();
+            
+                System.out.println("\nRectangle of red border");
+                redRectangle.draw();
+                }
+            }</code></pre>
+            
+                    <h5>5. Output</h5>
+                    <pre><code>Circle with normal border
+            Shape: Circle
+            
+            Circle of red border
+            Shape: Circle
+            Border Color: Red
+            
+            Rectangle of red border
+            Shape: Rectangle
+            Border Color: Red</code></pre>
+            
+                    <h5>6. Conclusion</h5>
+                    <p>The Decorator pattern provides a flexible alternative to subclassing for extending functionality. It allows for dynamic behavior addition without modifying the original class structure, promoting code reusability and adherence to the Open/Closed Principle.</p>
+                </div>
+                </div>
+            </div>
+              
         </div>
 
 
